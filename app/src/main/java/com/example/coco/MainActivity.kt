@@ -12,6 +12,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
+import com.example.coco.presentation.HomeScreen
 import com.example.coco.ui.theme.CocoAppTheme
 import com.example.coco.ui.theme.fredoka
 
@@ -22,22 +23,13 @@ class MainActivity : ComponentActivity() {
             CocoAppTheme {
                 // A surface container using the 'background' color from the theme
                 Surface(
-                    modifier = Modifier.fillMaxSize().padding(8.dp),
+                    modifier = Modifier
+                        .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
-
                 ) {
-                    Greeting("Coco")
+                    HomeScreen()
                 }
             }
         }
     }
-}
-@Composable
-fun Greeting(name: String, modifier: Modifier = Modifier) {
-    Text(
-        text = "Hello $name!",
-        modifier = modifier,
-        fontFamily = fredoka,
-        fontWeight = FontWeight.Normal
-    )
 }
