@@ -6,6 +6,17 @@
     <string name="description"> While You Sit And stay - We\'ll \n go out and play </string>
     <string name="btnStarted"> Get Started </string>
     <string name="haveAccount"> Already have an account? </string>
+
     <string name="login"> Login </string>
 
+    <!-- Login Screen -->
+    <string name="LOGIN"> LOGIN </string>
+    <string name="placeholderEmail"> Email Address </string>
+    <string name="placeholderPass"> Password </string>
+    <string name="forget"> Forget Password? </string>
+    <string name="orConnect"> or connect with </string>
+    <string name="loginGoogle"> Login with Google </string>
+    <string name="loginFacebook"> Login with Facebook </string>
+    <string name="loginApple"> Login with Apple </string>
+    <string name="footerText"> © All Rights Reserverd to Pixel Posse - 2022 </string>
 </resources>
