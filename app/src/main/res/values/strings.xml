@@ -1,3 +1,11 @@
 <resources>
-    <string name="app_name">COCO</string>
+    <string name="app_name"> COCO </string>
+
+    <!-- Home Screen -->
+    <string name="welcome"> Hey! Welcome </string>
+    <string name="description"> While You Sit And stay - We\'ll \n go out and play </string>
+    <string name="btnStarted"> Get Started </string>
+    <string name="haveAccount"> Already have an account? </string>
+    <string name="login"> Login </string>
+
 </resources>

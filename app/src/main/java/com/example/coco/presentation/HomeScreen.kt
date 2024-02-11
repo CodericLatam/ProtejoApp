@@ -22,6 +22,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
@@ -62,7 +63,7 @@ fun HomeBanner( modifier : Modifier ) {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
 
-        BoldText(text = "Hey! Welcome")
+        BoldText(text = stringResource( id = R.string.welcome ) )
 
         Spacer(modifier = Modifier.height(16.dp))
 
@@ -70,7 +71,7 @@ fun HomeBanner( modifier : Modifier ) {
             textAlign = TextAlign.Center,
             fontFamily = fredoka,
             fontWeight = FontWeight.Light,
-            text = "While You Sit And stay - We'll \ngo out and play"
+            text = stringResource( id = R.string.description )
         )
         Spacer(modifier = Modifier.height(32.dp))
         Button(
@@ -79,7 +80,7 @@ fun HomeBanner( modifier : Modifier ) {
             ),
             onClick = { }
         ) {
-            Text(text = "Get Started",
+            Text(text = stringResource(id = R.string.btnStarted),
                 textAlign = TextAlign.Center,
                 fontFamily = fredoka,
                 fontWeight = FontWeight.Medium,
@@ -91,11 +92,11 @@ fun HomeBanner( modifier : Modifier ) {
         Row(
             verticalAlignment = Alignment.CenterVertically
         ) {
-            BoldText(text = "Already have an account?")
+            BoldText(text = stringResource(id = R.string.haveAccount))
 
             TextButton(onClick = { }) {
                 Text(
-                    text = "Login",
+                    text = stringResource(id = R.string.login),
                     fontFamily = fredoka,
                     fontWeight = FontWeight.SemiBold,
                     fontSize = 20.sp,
