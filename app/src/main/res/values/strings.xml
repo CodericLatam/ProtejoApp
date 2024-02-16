@@ -19,4 +19,18 @@
     <string name="loginFacebook"> Login with Facebook </string>
     <string name="loginApple"> Login with Apple </string>
     <string name="footerText"> © All Rights Reserverd to Pixel Posse - 2022 </string>
+
+    <!-- Get Started -->
+    <string name="heywelcome"> Hey! Welcome </string>
+    <string name="desc_11"> while you sit and stay - we\'ll go out and play </string>
+
+    <string name="now"> Now! </string>
+    <string name="desc_21"> One tap for foods, accessories, health care products &amp; digital gadgets </string>
+    <string name="desc_22"> Grooming &amp; boarding </string>
+    <string name="desc_23"> Easy &amp; best consultation bookings </string>
+
+    <string name="weprovide"> We provide </string>
+    <string name="desc_31"> 24hrs location &amp; health updates </string>
+    <string name="desc_32"> On time feeding updates </string>
+    <string name="next"> Next </string>
 </resources>
