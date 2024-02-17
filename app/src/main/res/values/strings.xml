@@ -33,4 +33,6 @@
     <string name="desc_31"> 24hrs location &amp; health updates </string>
     <string name="desc_32"> On time feeding updates </string>
     <string name="next"> Next </string>
+
+    <string name="loading"> LOADING </string>
 </resources>

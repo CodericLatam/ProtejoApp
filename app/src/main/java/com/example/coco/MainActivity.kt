@@ -7,7 +7,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.ui.Modifier
+import com.example.coco.presentation.LoadingScreen
+import com.example.coco.presentation.LoginScreen
 import com.example.coco.presentation.getStarted.GetStartedScreen
+import com.example.coco.presentation.getStarted.GetStartedViewModel
 import com.example.coco.ui.theme.CocoAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -21,7 +24,9 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    GetStartedScreen()
+                    val getStartedViewModel = GetStartedViewModel()
+                    GetStartedScreen( getStartedViewModel )
+
                 }
             }
         }
