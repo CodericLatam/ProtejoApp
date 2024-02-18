@@ -35,4 +35,13 @@
     <string name="next"> Next </string>
 
     <string name="loading"> LOADING </string>
+
+    <!-- Pet Screen -->
+    <string name="def_name"> Bella </string>
+    <string name="def_type"> Border Collie </string>
+
+    <string name="date_age"> Age </string>
+    <string name="date_weight"> Weight </string>
+    <string name="date_height"> Height </string>
+    <string name="date_color"> Color </string>
 </resources>
