@@ -26,9 +26,9 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-                    //val getStartedViewModel = GetStartedViewModel()
-                    //GetStartedScreen( getStartedViewModel )
-                    PetScreen()
+                    val getStartedViewModel = GetStartedViewModel()
+                    GetStartedScreen( getStartedViewModel )
+                    // PetScreen()
                 }
             }
         }

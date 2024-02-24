@@ -56,14 +56,19 @@ fun GetStartedScreen(getStartedViewModel: GetStartedViewModel) {
     val image by getStartedViewModel.image.observeAsState(initial = R.drawable.get_started_1)
     Box(modifier = Modifier.fillMaxSize()) {
         ImageBackground(image = image)
-        BottomShet(modifier = Modifier.align(Alignment.BottomCenter), getStartedViewModel)
+        BottomSheet(
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .height(360.dp),
+            getStartedViewModel
+        )
     }
 }
 
 @Composable
 fun ImageBackground(image: Int) {
 
-    Crossfade(targetState = image, label = "Image", animationSpec = tween(1500, easing = EaseIn)) {
+    Crossfade(targetState = image, label = "Image", animationSpec = tween(500, easing = EaseIn)) {
         Image(
             painter = painterResource(id = it),
             contentDescription = "Background",
@@ -74,31 +79,38 @@ fun ImageBackground(image: Int) {
 }
 
 @Composable
-fun BottomShet(modifier: Modifier, getStartedViewModel: GetStartedViewModel) {
+fun BottomSheet(modifier: Modifier, getStartedViewModel: GetStartedViewModel) {
     val screen by getStartedViewModel.screen.observeAsState(initial = 1)
-    Column(
-        horizontalAlignment = Alignment.CenterHorizontally,
+    Crossfade(
+        targetState = screen,
+        label = "Screens",
         modifier = modifier
             .clip(RoundedCornerShape(topStart = 32.dp, topEnd = 32.dp))
-            .fillMaxWidth()
-            .alpha(0.9f)
             .background(Color.White)
-            .padding(top = 40.dp, bottom = 16.dp, start = 32.dp, end = 32.dp)
+            .fillMaxWidth()
+            .padding(top = 40.dp, bottom = 16.dp, start = 32.dp, end = 32.dp),
+
+        animationSpec = tween(500, easing = EaseIn)
     ) {
-        Row(
-            modifier = Modifier.fillMaxWidth(),
-            horizontalArrangement = Arrangement.Center
+        Column(
+            horizontalAlignment = Alignment.CenterHorizontally,
+            verticalArrangement = Arrangement.SpaceEvenly
         ) {
-            Chipset(if (screen == 1) seed else Color.Transparent)
-            Spacer(modifier = Modifier.width(8.dp))
-            Chipset(if (screen == 2) seed else Color.Transparent)
-            Spacer(modifier = Modifier.width(8.dp))
-            Chipset(if (screen == 3) seed else Color.Transparent)
-        }
-        when (screen) {
-            1 -> ContentScreenOne(getStartedViewModel)
-            2 -> ContentScreenTwo(getStartedViewModel)
-            3 -> ContentScreenThree(getStartedViewModel)
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.Center
+            ) {
+                Chipset(if (screen == 1) seed else Color.Transparent)
+                Spacer(modifier = Modifier.width(8.dp))
+                Chipset(if (screen == 2) seed else Color.Transparent)
+                Spacer(modifier = Modifier.width(8.dp))
+                Chipset(if (screen == 3) seed else Color.Transparent)
+            }
+            when (it) {
+                1 -> ContentScreenOne(getStartedViewModel)
+                2 -> ContentScreenTwo(getStartedViewModel)
+                3 -> ContentScreenThree(getStartedViewModel)
+            }
         }
     }
 }
@@ -161,7 +173,7 @@ fun ContentScreenOne(getStartedViewModel: GetStartedViewModel) {
     Image(
         painter = painterResource(id = R.drawable.ic_launcher),
         contentDescription = "icon",
-        modifier = Modifier.size(160.dp)
+        modifier = Modifier.size(140.dp)
     )
     TitleContentText(text = R.string.welcome)
     Spacer(modifier = Modifier.height(16.dp))
