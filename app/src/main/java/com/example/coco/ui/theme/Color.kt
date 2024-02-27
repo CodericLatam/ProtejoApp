@@ -68,5 +68,7 @@ val surfaceHome = Color(0xFFA8DBD9)
 val buttonHome = Color( 0xFF5AB198 )
 val text_desc_color = Color( 0xFF064E57 )
 val rosa = Color( 0xFFFFC0CB )
+val navColor = Color( 0xFF5CB15A )
+val selectedIconColor = Color( 0xFF327030 )
 
 val seed = Color(0xFF5CB15A)

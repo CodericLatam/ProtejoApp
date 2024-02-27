@@ -44,4 +44,11 @@
     <string name="date_weight"> Weight </string>
     <string name="date_height"> Height </string>
     <string name="date_color"> Color </string>
+    
+    <!-- Navigation Bar --> 
+    <string name="home"> HOME </string>
+    <string name="discover"> DISCOVER </string>
+    <string name="explore"> EXPLORE </string>
+    <string name="manage"> MANAGE </string>
+    <string name="profile"> PROFILE </string>
 </resources>

@@ -1,11 +1,11 @@
 package com.example.coco.presentation
 
-import android.widget.Space
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -25,7 +25,6 @@ import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
-import androidx.compose.material3.CardElevation
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
@@ -36,13 +35,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.TextRange
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.coco.R
-import com.example.coco.presentation.getStarted.DescriptionStarted
 import com.example.coco.presentation.getStarted.TitleContentText
 import com.example.coco.ui.theme.fredoka
 import com.example.coco.ui.theme.rosa
@@ -50,9 +46,9 @@ import com.example.coco.ui.theme.seed
 import com.example.coco.ui.theme.text_desc_color
 
 @Composable
-fun PetScreen() {
+fun PetScreen( paddingValues: PaddingValues ) {
     Box(
-        Modifier.fillMaxSize()
+        Modifier.fillMaxSize().padding( paddingValues )
     ) {
         ImageBanner()
         BodyPetScreen(Modifier.align(Alignment.BottomCenter))
