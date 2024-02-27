@@ -1,9 +1,13 @@
 package com.example.coco.model
 
 sealed class Routes( val route : String ) {
+    // Rutas de Start Activity
     object InicioSesion: Routes("inicio/inicio_sesion")
     object GetStarted: Routes("inicio/get_started")
-
-    object MainScreen: Routes("main/inicio")
+    // Rutas de MainActivity
+    object MainScreen: Routes("main/home")
     object MyPetScreen: Routes("main/profile")
+    object ExploreScreen: Routes("main/explore")
+    object DiscoverScreen: Routes("main/discover")
+    object ManageScreen: Routes("main/manage")
 }

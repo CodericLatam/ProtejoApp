@@ -1,12 +1,11 @@
 package com.example.coco.model
 
 import androidx.annotation.DrawableRes
-import androidx.compose.ui.res.stringResource
 import com.example.coco.R
 
 data class Pet(
     val name: String = "",
-    val gender: Gender = Gender.MAN,
+    val gender: Gender = Gender.FEMALE,
     val typePet: String = "",
     var age : Int = 0,
     var weight: Float = 0f,
@@ -15,7 +14,7 @@ data class Pet(
     var description: String = "",
     var image: String = ""
 )
-enum class Gender( @DrawableRes type: Int ) {
+enum class Gender( @DrawableRes val type: Int ) {
     MAN( R.drawable.male ),
-    FEMALE(R.drawable.female )
+    FEMALE(R.drawable.female );
 }
