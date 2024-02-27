@@ -62,13 +62,13 @@ fun BodyPetScreen(mod: Modifier) {
             .fillMaxWidth()
             .clip( RoundedCornerShape(32.dp))
             .background(Color.White)
-            .padding(32.dp)
+            .padding( start = 32.dp, end = 32.dp, top = 8.dp, bottom = 16.dp)
             .verticalScroll(rememberScrollState())
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 24.dp, bottom = 24.dp),
+                .padding(top = 16.dp, bottom = 16.dp),
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 16.dp
@@ -104,7 +104,8 @@ fun BodyPetScreen(mod: Modifier) {
         Row {
             Icon(
                 painter = painterResource(id = R.drawable.pet),
-                contentDescription = "Pet"
+                contentDescription = "Pet",
+                tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
@@ -112,6 +113,7 @@ fun BodyPetScreen(mod: Modifier) {
                 fontFamily = fredoka,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
+                color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -130,12 +132,14 @@ fun BodyPetScreen(mod: Modifier) {
             fontFamily = fredoka,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp,
+            color = Color.Black
         )
         Spacer(modifier = Modifier.height(24.dp))
         Row {
             Icon(
                 painter = painterResource(id = R.drawable.heart),
-                contentDescription = "Pet"
+                contentDescription = "Pet",
+                tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
@@ -143,6 +147,7 @@ fun BodyPetScreen(mod: Modifier) {
                 fontFamily = fredoka,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
+                color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -172,6 +177,7 @@ fun PetStateData(title: String) {
             fontFamily = fredoka,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
+            color = Color.Black
         )
         Button(
             colors = ButtonDefaults.buttonColors(
@@ -204,7 +210,7 @@ fun PetData(title: String, desc: String) {
                 .align(Alignment.CenterHorizontally),
             fontFamily = fredoka,
             fontWeight = FontWeight.SemiBold,
-            fontSize = 16.sp,
+            fontSize = 16.sp
         )
         Text(
             text = desc,

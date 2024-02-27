@@ -1,6 +1,5 @@
-package com.example.coco.presentation
+package com.example.coco.presentation.login
 
-import android.widget.Space
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -42,13 +41,14 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavHostController
 import com.example.coco.R
+import com.example.coco.model.Routes
 import com.example.coco.ui.theme.buttonHome
 import com.example.coco.ui.theme.fredoka
-import com.example.coco.ui.theme.surfaceHome
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen( loginViewModel: LoginViewModel ) {
     Box {
         Footer(Modifier.align(Alignment.BottomCenter))
 
@@ -63,12 +63,12 @@ fun LoginScreen() {
         )
 
 
-        Body(mod = Modifier.align(Alignment.Center))
+        Body(mod = Modifier.align(Alignment.Center), loginViewModel )
     }
 }
 
 @Composable
-fun Body(mod: Modifier) {
+fun Body( mod: Modifier, loginViewModel: LoginViewModel ) {
     var email by remember {
         mutableStateOf("")
     }
@@ -111,7 +111,7 @@ fun Body(mod: Modifier) {
             modifier = Modifier
                 .fillMaxWidth(0.9f)
                 .align(Alignment.CenterHorizontally),
-            onClick = { /*TODO*/ },
+            onClick = { loginViewModel.onLoginButtonClick() },
             shape = RoundedCornerShape(10.dp ),
             colors = ButtonDefaults.buttonColors(
                 containerColor = buttonHome

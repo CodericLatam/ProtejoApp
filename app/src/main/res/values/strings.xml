@@ -51,4 +51,8 @@
     <string name="explore"> EXPLORE </string>
     <string name="manage"> MANAGE </string>
     <string name="profile"> PROFILE </string>
+
+    <!-- Genders -->
+    <string name="man"> Man </string>
+    <string name="female"> Female </string>
 </resources>
