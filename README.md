@@ -1,3 +1,4 @@
+<<<<<<< Updated upstream
 # 🐶 PetCare Mobile App
 
 Aplicación de control y protección de animales.
@@ -14,3 +15,6 @@ Si tienes conocimientos de kotlin usando jetpack compose puedes colaborar en des
 
 Antes de colaborar, revisa el en apartado Issues que hace falta por desarrollar, comenta que quieres apoyar y se te asignara esa tarea.
 
+=======
+# PetCare Mobile App
+>>>>>>> Stashed changes

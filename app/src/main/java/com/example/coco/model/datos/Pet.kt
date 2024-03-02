@@ -1,4 +1,4 @@
-package com.example.coco.model
+package com.example.coco.model.datos
 
 import androidx.annotation.DrawableRes
 import com.example.coco.R

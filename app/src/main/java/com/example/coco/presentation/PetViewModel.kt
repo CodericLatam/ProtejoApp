@@ -1,8 +1,8 @@
 package com.example.coco.presentation
 
 import androidx.lifecycle.ViewModel
-import com.example.coco.model.Gender
-import com.example.coco.model.Pet
+import com.example.coco.model.datos.Gender
+import com.example.coco.model.datos.Pet
 
 class PetViewModel : ViewModel() {
     val myPet = Pet(
