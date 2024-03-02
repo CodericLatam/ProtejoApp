@@ -75,6 +75,7 @@ fun BottomBar( navController: NavHostController) {
             selected = screen == 4,
             onClick = {
                       screen = 4
+                navController.navigate( Routes.ManageScreen.route )
             },
             icon = { Icon(painterResource(id = R.drawable.devices_icon), "Manage" ) },
             label = { MyTextNavBar(R.string.manage) },

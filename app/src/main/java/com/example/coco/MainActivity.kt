@@ -11,8 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.coco.model.Routes
-import com.example.coco.presentation.HomeScreen
-import com.example.coco.presentation.LoadingScreen
+import com.example.coco.presentation.DeviceScreen
 import com.example.coco.presentation.PetScreen
 import com.example.coco.presentation.PetViewModel
 import com.example.coco.presentation.components.BottomBar
@@ -49,7 +48,7 @@ class MainActivity : ComponentActivity() {
                             // TODO: Finish the discover Screen
                         }
                         composable( Routes.ManageScreen.route ) {
-                            // TODO: Finish the manage Screen
+                            DeviceScreen( paddingValues )
                         }
                     }
                 }
