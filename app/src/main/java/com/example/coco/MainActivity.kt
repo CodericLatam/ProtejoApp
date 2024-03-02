@@ -44,9 +44,6 @@ class MainActivity : ComponentActivity() {
                         composable( Routes.ExploreScreen.route ) {
                             // TODO: Finish the explore Screen
                         }
-                        composable( Routes.DiscoverScreen.route ) {
-                            // TODO: Finish the discover Screen
-                        }
                         composable( Routes.ManageScreen.route ) {
                             DeviceScreen( paddingValues )
                         }

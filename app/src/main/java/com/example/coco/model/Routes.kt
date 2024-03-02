@@ -8,6 +8,5 @@ sealed class Routes( val route : String ) {
     object MainScreen: Routes("main/home")
     object MyPetScreen: Routes("main/profile")
     object ExploreScreen: Routes("main/explore")
-    object DiscoverScreen: Routes("main/discover")
     object ManageScreen: Routes("main/manage")
 }

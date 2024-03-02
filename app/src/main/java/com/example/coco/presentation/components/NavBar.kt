@@ -45,19 +45,6 @@ fun BottomBar( navController: NavHostController) {
             )
         )
         NavigationBarItem(
-            selected = screen == 2,
-            onClick = {
-                screen = 2
-            },
-            icon = { Icon(painter = painterResource(id = R.drawable.explore_icon), "Discover") },
-            label = { MyTextNavBar(R.string.discover) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
-                unselectedIconColor = Color.White,
-                indicatorColor = selectedIconColor
-            )
-        )
-        NavigationBarItem(
             selected = screen == 3,
             onClick = {
                       screen = 3
