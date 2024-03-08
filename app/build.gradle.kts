@@ -40,7 +40,7 @@ android {
         compose = true
     }
     composeOptions {
-        kotlinCompilerExtensionVersion = "1.5.1"
+        kotlinCompilerExtensionVersion = "1.5.10"
     }
     packaging {
         resources {
@@ -62,6 +62,9 @@ dependencies {
 
     // Live Data.
     implementation("androidx.compose.runtime:runtime-livedata:1.6.1")
+    // Navegación
+    implementation("androidx.navigation:navigation-common:2.5.3")
+    implementation("androidx.navigation:navigation-compose:2.7.7")
 
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")

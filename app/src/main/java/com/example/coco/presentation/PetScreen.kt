@@ -46,29 +46,29 @@ import com.example.coco.ui.theme.seed
 import com.example.coco.ui.theme.text_desc_color
 
 @Composable
-fun PetScreen( paddingValues: PaddingValues ) {
+fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel ) {
     Box(
         Modifier.fillMaxSize().padding( paddingValues )
     ) {
         ImageBanner()
-        BodyPetScreen(Modifier.align(Alignment.BottomCenter))
+        BodyPetScreen(Modifier.align(Alignment.BottomCenter), petViewModel )
     }
 }
 
 @Composable
-fun BodyPetScreen(mod: Modifier) {
+fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
     Column(
         modifier = mod
             .fillMaxWidth()
             .clip( RoundedCornerShape(32.dp))
             .background(Color.White)
-            .padding(32.dp)
-            .verticalScroll(rememberScrollState())
+            .padding( start = 32.dp, end = 32.dp, top = 8.dp, bottom = 16.dp)
+            .verticalScroll( rememberScrollState() )
     ) {
         Card(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(top = 24.dp, bottom = 24.dp),
+                .padding(top = 16.dp, bottom = 16.dp),
             shape = RoundedCornerShape(16.dp),
             elevation = CardDefaults.cardElevation(
                 defaultElevation = 16.dp
@@ -84,12 +84,12 @@ fun BodyPetScreen(mod: Modifier) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    TitleContentText(text = R.string.def_name)
+                    PetTitleContentText( text = petViewModel.myPet.name )
                     Spacer(modifier = Modifier.height(8.dp))
-                    PetTypeText(text = "Border Collie")
+                    PetTypeText(text = petViewModel.myPet.typePet)
                 }
                 Icon(
-                    painter = painterResource(id = R.drawable.female),
+                    painter = painterResource( id = petViewModel.myPet.gender.type ),
                     contentDescription = "Gender",
                     tint = Color.White,
                     modifier = Modifier
@@ -104,14 +104,16 @@ fun BodyPetScreen(mod: Modifier) {
         Row {
             Icon(
                 painter = painterResource(id = R.drawable.pet),
-                contentDescription = "Pet"
+                contentDescription = "Pet",
+                tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
-                text = "About Bella",
+                text = "About ${petViewModel.myPet.name}",
                 fontFamily = fredoka,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
+                color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -119,23 +121,25 @@ fun BodyPetScreen(mod: Modifier) {
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            PetData(stringResource(id = R.string.date_age), "1y 4m 11d")
-            PetData(stringResource(id = R.string.date_weight), "7.5 Kg")
-            PetData(stringResource(id = R.string.date_height), "54 cm")
-            PetData(stringResource(id = R.string.date_color), "Black")
+            PetData(stringResource(id = R.string.date_age), "${petViewModel.myPet.age.toString()} days" )
+            PetData(stringResource(id = R.string.date_weight), "${petViewModel.myPet.weight.toString()} Kg")
+            PetData(stringResource(id = R.string.date_height), "${petViewModel.myPet.height.toString()} cm" )
+            PetData(stringResource(id = R.string.date_color), petViewModel.myPet.color )
         }
         Spacer(modifier = Modifier.height(16.dp))
         Text(
-            text = "My first dog which was gifted by my mother for my 20th birthday.",
+            text = petViewModel.myPet.description,
             fontFamily = fredoka,
             fontWeight = FontWeight.Normal,
             fontSize = 16.sp,
+            color = Color.Black
         )
         Spacer(modifier = Modifier.height(24.dp))
         Row {
             Icon(
                 painter = painterResource(id = R.drawable.heart),
-                contentDescription = "Pet"
+                contentDescription = "Pet",
+                tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
             Text(
@@ -143,6 +147,7 @@ fun BodyPetScreen(mod: Modifier) {
                 fontFamily = fredoka,
                 fontWeight = FontWeight.SemiBold,
                 fontSize = 20.sp,
+                color = Color.Black
             )
         }
         Spacer(modifier = Modifier.height(16.dp))
@@ -172,6 +177,7 @@ fun PetStateData(title: String) {
             fontFamily = fredoka,
             fontWeight = FontWeight.SemiBold,
             fontSize = 16.sp,
+            color = Color.Black
         )
         Button(
             colors = ButtonDefaults.buttonColors(
@@ -204,7 +210,7 @@ fun PetData(title: String, desc: String) {
                 .align(Alignment.CenterHorizontally),
             fontFamily = fredoka,
             fontWeight = FontWeight.SemiBold,
-            fontSize = 16.sp,
+            fontSize = 16.sp
         )
         Text(
             text = desc,
@@ -238,5 +244,15 @@ fun PetTypeText(text: String) {
         fontWeight = FontWeight.SemiBold,
         fontSize = 16.sp,
         color = text_desc_color
+    )
+}
+@Composable
+fun PetTitleContentText(text: String) {
+    Text(
+        text = text,
+        color = Color.Black,
+        fontFamily = fredoka,
+        fontWeight = FontWeight.SemiBold,
+        fontSize = 24.sp
     )
 }

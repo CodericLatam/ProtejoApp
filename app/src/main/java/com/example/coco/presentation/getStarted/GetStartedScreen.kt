@@ -52,7 +52,7 @@ import com.example.coco.ui.theme.seed
 
 
 @Composable
-fun GetStartedScreen(getStartedViewModel: GetStartedViewModel) {
+fun GetStartedScreen( getStartedViewModel: GetStartedViewModel ) {
     val image by getStartedViewModel.image.observeAsState(initial = R.drawable.get_started_1)
     Box(modifier = Modifier.fillMaxSize()) {
         ImageBackground(image = image)
@@ -119,6 +119,7 @@ fun BottomSheet(modifier: Modifier, getStartedViewModel: GetStartedViewModel) {
 fun TitleContentText(text: Int) {
     Text(
         text = stringResource(id = text),
+        color = Color.Black,
         fontFamily = fredoka,
         fontWeight = FontWeight.SemiBold,
         fontSize = 24.sp
@@ -224,10 +225,11 @@ fun ContentScreenThree(getStartedViewModel: GetStartedViewModel) {
         Text(
             text = stringResource(id = R.string.haveAccount),
             fontFamily = fredoka,
-            fontSize = 16.sp
+            fontSize = 16.sp,
+            color = Color.Black
         )
 
-        TextButton(onClick = { }) {
+        TextButton(onClick = { getStartedViewModel.onLoginBtnClick() }) {
             Text(
                 text = stringResource(id = R.string.login),
                 fontFamily = fredoka,
