@@ -13,5 +13,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "COCO"
+rootProject.name = "Protective"
 include(":app")

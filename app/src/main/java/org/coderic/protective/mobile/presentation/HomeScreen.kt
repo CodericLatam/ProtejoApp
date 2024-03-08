@@ -52,7 +52,7 @@ fun HomeImage( modifier : Modifier ) {
     Image(
         modifier = modifier.size(292.dp),
         painter = painterResource(id = R.drawable.ic_launcher),
-        contentDescription = "Coco Icon",
+        contentDescription = "Protective Icon",
         alignment = Alignment.BottomCenter
     )
 }
