@@ -61,7 +61,7 @@ dependencies {
     implementation("androidx.compose.material3:material3")
 
     // Live Data.
-    implementation("androidx.compose.runtime:runtime-livedata:1.6.1")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.3")
     // Navegación
     implementation("androidx.navigation:navigation-common:2.5.3")
     implementation("androidx.navigation:navigation-compose:2.7.7")
