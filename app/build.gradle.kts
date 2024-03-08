@@ -4,11 +4,11 @@ plugins {
 }
 
 android {
-    namespace = "com.example.coco"
+    namespace = "org.coderic.protective.mobile"
     compileSdk = 34
 
     defaultConfig {
-        applicationId = "com.example.coco"
+        applicationId = "org.coderic.protective.mobile"
         minSdk = 30
         targetSdk = 34
         versionCode = 1
