@@ -17,6 +17,8 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+        testFunctionalTest = true
+        testHandleProfiling = true
     }
 
     buildTypes {
