@@ -3,6 +3,7 @@ package org.coderic.protective.mobile.model.datos
 import androidx.annotation.DrawableRes
 import org.coderic.protective.mobile.R
 
+
 data class Pet(
     val name: String = "",
     val gender: Gender = Gender.FEMALE,
