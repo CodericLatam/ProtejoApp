@@ -1,6 +1,7 @@
 package org.coderic.protective.mobile.model.datos
 
 import androidx.annotation.DrawableRes
+import androidx.compose.ui.res.stringResource
 import org.coderic.protective.mobile.R
 
 
@@ -15,7 +16,7 @@ data class Pet(
     var description: String = "",
     var image: String = ""
 )
-enum class Gender( @DrawableRes val type: Int ) {
-    MAN( R.drawable.male ),
-    FEMALE(R.drawable.female );
+enum class Gender( val type: Int, @DrawableRes val image: Int ) {
+    MAN( 0,  R.drawable.male ),
+    FEMALE( 1, R.drawable.female );
 }
