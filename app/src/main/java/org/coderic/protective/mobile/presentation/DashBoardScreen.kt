@@ -27,11 +27,11 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import org.coderic.protective.mobile.R
 import org.coderic.protective.mobile.model.Routes
+import org.coderic.protective.mobile.presentation.pet.PetTitleContentText
 import org.coderic.protective.mobile.ui.theme.fredoka
 
 @Composable

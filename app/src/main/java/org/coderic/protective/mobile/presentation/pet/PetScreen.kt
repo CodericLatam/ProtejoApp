@@ -1,4 +1,4 @@
-package org.coderic.protective.mobile.presentation
+package org.coderic.protective.mobile.presentation.pet
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -39,14 +39,13 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.coderic.protective.mobile.R
-import org.coderic.protective.mobile.presentation.getStarted.TitleContentText
 import org.coderic.protective.mobile.ui.theme.fredoka
 import org.coderic.protective.mobile.ui.theme.rosa
 import org.coderic.protective.mobile.ui.theme.seed
 import org.coderic.protective.mobile.ui.theme.text_desc_color
 
 @Composable
-fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel ) {
+fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel) {
     Box(
         Modifier.fillMaxSize().padding( paddingValues )
     ) {

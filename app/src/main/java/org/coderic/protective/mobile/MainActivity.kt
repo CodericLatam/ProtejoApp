@@ -13,8 +13,8 @@ import androidx.navigation.compose.rememberNavController
 import org.coderic.protective.mobile.model.Routes
 import org.coderic.protective.mobile.presentation.DashBoardScreen
 import org.coderic.protective.mobile.presentation.DeviceScreen
-import org.coderic.protective.mobile.presentation.PetScreen
-import org.coderic.protective.mobile.presentation.PetViewModel
+import org.coderic.protective.mobile.presentation.pet.PetScreen
+import org.coderic.protective.mobile.presentation.pet.PetViewModel
 import org.coderic.protective.mobile.presentation.components.BottomBar
 import org.coderic.protective.mobile.ui.theme.CocoAppTheme
 
