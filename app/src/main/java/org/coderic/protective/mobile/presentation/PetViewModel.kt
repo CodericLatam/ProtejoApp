@@ -15,5 +15,4 @@ class PetViewModel : ViewModel() {
         color = "Black",
         description = "My first dog which was gifted by my mother for my 20th birthday."
     )
-
 }

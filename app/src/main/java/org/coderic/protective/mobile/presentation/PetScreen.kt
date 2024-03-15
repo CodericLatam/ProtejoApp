@@ -89,7 +89,7 @@ fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
                     PetTypeText(text = petViewModel.myPet.typePet)
                 }
                 Icon(
-                    painter = painterResource( id = petViewModel.myPet.gender.type ),
+                    painter = painterResource( id = petViewModel.myPet.gender.image ),
                     contentDescription = "Gender",
                     tint = Color.White,
                     modifier = Modifier

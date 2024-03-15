@@ -11,6 +11,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import org.coderic.protective.mobile.model.Routes
+import org.coderic.protective.mobile.presentation.DashBoardScreen
 import org.coderic.protective.mobile.presentation.DeviceScreen
 import org.coderic.protective.mobile.presentation.PetScreen
 import org.coderic.protective.mobile.presentation.PetViewModel
@@ -36,7 +37,7 @@ class MainActivity : ComponentActivity() {
                         startDestination = Routes.MainScreen.route
                     ) {
                         composable( Routes.MainScreen.route ) {
-                            // TODO: Finish the Main Screen
+                            DashBoardScreen(paddingValues = paddingValues, navController )
                         }
                         composable( Routes.MyPetScreen.route) {
                             PetScreen( paddingValues = paddingValues, PetViewModel() )
