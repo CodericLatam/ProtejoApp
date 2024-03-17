@@ -31,7 +31,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavHostController
 import org.coderic.protective.mobile.R
 import org.coderic.protective.mobile.model.Routes
-import org.coderic.protective.mobile.presentation.pet.PetTitleContentText
+import org.coderic.protective.mobile.ui.theme.PetCareTitleText
 import org.coderic.protective.mobile.ui.theme.fredoka
 
 @Composable
@@ -109,7 +109,7 @@ fun ShowMyPets() {
             modifier = Modifier.padding( 8.dp )
         ) {
             Icon(painter = painterResource(id = R.drawable.pet), contentDescription = "Pet")
-            PetTitleContentText(text = "My Pets")
+            PetCareTitleText(text = "My Pets", 24)
         }
         Row ( horizontalArrangement = Arrangement.SpaceEvenly,
             modifier = Modifier

@@ -6,8 +6,8 @@ import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.NavigationBar
 import androidx.compose.material3.NavigationBarItem
+import androidx.compose.material3.NavigationBarItemColors
 import androidx.compose.material3.NavigationBarItemDefaults
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
@@ -16,18 +16,17 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.navigation.NavHostController
 import org.coderic.protective.mobile.R
 import org.coderic.protective.mobile.model.Routes
-import org.coderic.protective.mobile.ui.theme.fredoka
+import org.coderic.protective.mobile.ui.theme.MyNavBarText
 import org.coderic.protective.mobile.ui.theme.navColor
 import org.coderic.protective.mobile.ui.theme.selectedIconColor
 
 @Composable
 fun BottomBar( navController: NavHostController) {
     var screen by remember { mutableStateOf( 1 ) }
-    NavigationBar(
+    NavigationBar (
         containerColor = navColor
     ) {
         NavigationBarItem(
@@ -37,40 +36,28 @@ fun BottomBar( navController: NavHostController) {
                 navController.navigate( Routes.MainScreen.route )
             },
             icon = { Icon(Icons.Filled.Home, "Home" ) },
-            label = { MyTextNavBar(R.string.home) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
-                unselectedIconColor = Color.White,
-                indicatorColor = selectedIconColor
-            )
+            label = { MyNavBarText( stringResource(id = R.string.home ) ) },
+            colors = navBarItemColors()
         )
         NavigationBarItem(
             selected = screen == 3,
             onClick = {
-                      screen = 3
+                screen = 3
                 navController.navigate( Routes.ExploreScreen.route )
             },
             icon = { Icon(Icons.Filled.LocationOn, "Location") },
-            label = { MyTextNavBar(R.string.explore) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
-                unselectedIconColor = Color.White,
-                indicatorColor = selectedIconColor
-            )
+            label = { MyNavBarText( stringResource(id = R.string.explore) ) },
+            colors = navBarItemColors()
         )
         NavigationBarItem(
             selected = screen == 4,
             onClick = {
-                      screen = 4
+                screen = 4
                 navController.navigate( Routes.ManageScreen.route )
             },
-            icon = { Icon(painterResource(id = R.drawable.devices_icon), "Manage" ) },
-            label = { MyTextNavBar(R.string.manage) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
-                unselectedIconColor = Color.White,
-                indicatorColor = selectedIconColor
-            )
+            icon =  { Icon(painterResource(id = R.drawable.devices_icon), "Manage" ) },
+            label = { MyNavBarText( stringResource( id = R.string.manage ) ) },
+            colors = navBarItemColors()
         )
         NavigationBarItem(
             selected = screen == 5,
@@ -78,23 +65,18 @@ fun BottomBar( navController: NavHostController) {
                 screen = 5
                 navController.navigate( Routes.MyPetScreen.route )
             },
-            icon = { Icon(painterResource(id = R.drawable.sound_dog_icon), "Dog", tint = Color.White) },
-            label = { MyTextNavBar(R.string.profile) },
-            colors = NavigationBarItemDefaults.colors(
-                selectedIconColor = Color.White,
-                unselectedIconColor = Color.White,
-                indicatorColor = selectedIconColor
-            )
+            icon =  { Icon(painterResource(id = R.drawable.sound_dog_icon), "Dog", tint = Color.White) },
+            label = { MyNavBarText( stringResource(id = R.string.profile)) },
+            colors = navBarItemColors()
         )
     }
 }
-
 @Composable
-fun MyTextNavBar(txt: Int) {
-    Text(
-        text = stringResource(id = txt),
-        fontFamily = fredoka,
-        fontWeight = FontWeight.Medium,
-        color = Color.White
+fun navBarItemColors() : NavigationBarItemColors {
+    return NavigationBarItemDefaults.colors(
+        selectedIconColor = Color.White,
+        unselectedIconColor = Color.White,
+        indicatorColor = selectedIconColor
     )
 }
+

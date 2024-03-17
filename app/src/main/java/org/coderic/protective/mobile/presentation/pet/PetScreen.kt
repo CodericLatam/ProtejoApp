@@ -36,9 +36,12 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.coderic.protective.mobile.R
+import org.coderic.protective.mobile.ui.theme.PetCareContentText
+import org.coderic.protective.mobile.ui.theme.PetCareTitleText
 import org.coderic.protective.mobile.ui.theme.fredoka
 import org.coderic.protective.mobile.ui.theme.rosa
 import org.coderic.protective.mobile.ui.theme.seed
@@ -47,7 +50,9 @@ import org.coderic.protective.mobile.ui.theme.text_desc_color
 @Composable
 fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel) {
     Box(
-        Modifier.fillMaxSize().padding( paddingValues )
+        Modifier
+            .fillMaxSize()
+            .padding(paddingValues)
     ) {
         ImageBanner()
         BodyPetScreen(Modifier.align(Alignment.BottomCenter), petViewModel )
@@ -55,14 +60,14 @@ fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel) {
 }
 
 @Composable
-fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
+fun BodyPetScreen( modifier: Modifier, petViewModel: PetViewModel ) {
     Column(
-        modifier = mod
+        modifier = modifier
             .fillMaxWidth()
-            .clip( RoundedCornerShape(32.dp))
+            .clip(RoundedCornerShape(32.dp))
             .background(Color.White)
-            .padding( start = 32.dp, end = 32.dp, top = 8.dp, bottom = 16.dp)
-            .verticalScroll( rememberScrollState() )
+            .padding(start = 32.dp, end = 32.dp, top = 8.dp, bottom = 16.dp)
+            .verticalScroll(rememberScrollState())
     ) {
         Card(
             modifier = Modifier
@@ -83,9 +88,9 @@ fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    PetTitleContentText( text = petViewModel.myPet.name )
+                    PetCareTitleText( text = petViewModel.myPet.name, 24 )
                     Spacer(modifier = Modifier.height(8.dp))
-                    PetTypeText(text = petViewModel.myPet.typePet)
+                    PetCareContentText (text = petViewModel.myPet.typePet, 16, text_desc_color )
                 }
                 Icon(
                     painter = painterResource( id = petViewModel.myPet.gender.image ),
@@ -107,13 +112,7 @@ fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
                 tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = "About ${petViewModel.myPet.name}",
-                fontFamily = fredoka,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = Color.Black
-            )
+            PetCareTitleText(text = "About ${petViewModel.myPet.name}", size = 20)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row(
@@ -126,13 +125,7 @@ fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
             PetData(stringResource(id = R.string.date_color), petViewModel.myPet.color )
         }
         Spacer(modifier = Modifier.height(16.dp))
-        Text(
-            text = petViewModel.myPet.description,
-            fontFamily = fredoka,
-            fontWeight = FontWeight.Normal,
-            fontSize = 16.sp,
-            color = Color.Black
-        )
+        PetCareContentText(text = petViewModel.myPet.description, size = 16, color = Color.Gray, align = TextAlign.Start )
         Spacer(modifier = Modifier.height(24.dp))
         Row {
             Icon(
@@ -141,13 +134,7 @@ fun BodyPetScreen(mod: Modifier, petViewModel: PetViewModel) {
                 tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
-            Text(
-                text = "Bella's Status",
-                fontFamily = fredoka,
-                fontWeight = FontWeight.SemiBold,
-                fontSize = 20.sp,
-                color = Color.Black
-            )
+            PetCareTitleText(text = "${petViewModel.myPet.name}'s Status", size = 20)
         }
         Spacer(modifier = Modifier.height(16.dp))
         PetStateData(title = "Location")
@@ -171,13 +158,7 @@ fun PetStateData(title: String) {
                 .background(seed)
                 .padding(8.dp)
         )
-        Text(
-            text = title,
-            fontFamily = fredoka,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 16.sp,
-            color = Color.Black
-        )
+        PetCareTitleText(text = title, size = 16)
         Button(
             colors = ButtonDefaults.buttonColors(
                 containerColor = seed
@@ -185,11 +166,7 @@ fun PetStateData(title: String) {
             shape = RoundedCornerShape( 10.dp),
             onClick = { }
         ) {
-            Text(text = "Check Location",
-                fontFamily = fredoka,
-                fontWeight = FontWeight.Normal,
-                fontSize = 14.sp
-                )
+            PetCareContentText(text = "Check Location", size = 14, Color.White )
             Icon(imageVector = Icons.Filled.KeyboardArrowRight, contentDescription = "Arrow Right")
         }
     }
@@ -202,22 +179,20 @@ fun PetData(title: String, desc: String) {
             defaultElevation = 8.dp
         )
     ) {
-        Text(
+        PetCareTitleText(
             text = title,
+            size = 16,
             modifier = Modifier
                 .padding(top = 8.dp)
-                .align(Alignment.CenterHorizontally),
-            fontFamily = fredoka,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 16.sp
+                .align(Alignment.CenterHorizontally)
         )
-        Text(
+        PetCareTitleText(
             text = desc,
-            fontFamily = fredoka,
-            fontWeight = FontWeight.SemiBold,
-            fontSize = 14.sp,
-            color = text_desc_color,
-            modifier = Modifier.padding(bottom = 8.dp, start = 12.dp, end = 12.dp)
+            size = 14,
+            text_desc_color,
+            modifier = Modifier
+                .padding(bottom = 8.dp, start = 12.dp, end = 12.dp)
+                .align(Alignment.CenterHorizontally)
         )
     }
 }
@@ -232,26 +207,5 @@ fun ImageBanner() {
         contentDescription = "Pet",
         contentScale = ContentScale.Crop,
         alignment = Alignment.Center
-    )
-}
-
-@Composable
-fun PetTypeText(text: String) {
-    Text(
-        text = text,
-        fontFamily = fredoka,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 16.sp,
-        color = text_desc_color
-    )
-}
-@Composable
-fun PetTitleContentText(text: String) {
-    Text(
-        text = text,
-        color = Color.Black,
-        fontFamily = fredoka,
-        fontWeight = FontWeight.SemiBold,
-        fontSize = 24.sp
     )
 }

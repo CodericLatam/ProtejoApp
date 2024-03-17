@@ -17,6 +17,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import org.coderic.protective.mobile.R
+import org.coderic.protective.mobile.ui.theme.PetCareTitleText
 import org.coderic.protective.mobile.ui.theme.fredoka
 import org.coderic.protective.mobile.ui.theme.seed
 
@@ -26,7 +27,7 @@ fun LoadingScreen(paddingValues: PaddingValues) {
         Modifier
             .fillMaxSize()
             .background(seed)
-            .padding( paddingValues ),
+            .padding(paddingValues),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
@@ -35,12 +36,7 @@ fun LoadingScreen(paddingValues: PaddingValues) {
             contentDescription = "loading",
             modifier = Modifier.size( 320.dp )
         )
-        Text(
-            text = stringResource(id = R.string.loading),
-            fontSize = 32.sp,
-            fontFamily = fredoka,
-            letterSpacing = 5.sp
-        )
+        PetCareTitleText(text = stringResource(id = R.string.loading), size = 32 )
     }
 
 }

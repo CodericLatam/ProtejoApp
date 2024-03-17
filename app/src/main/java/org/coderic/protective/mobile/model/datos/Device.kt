@@ -6,4 +6,8 @@ package org.coderic.protective.mobile.model.datos
  * @param status Shows if the device is conected.
  * @param battery Shows the device battery state.
  * */
-data class Device( val name: String, var status: Boolean, var battery: Int )
+data class Device(
+    val name: String,
+    var status: Boolean = false,
+    var battery: Int = 0
+)

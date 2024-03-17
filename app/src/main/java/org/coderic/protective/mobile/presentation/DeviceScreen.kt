@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
-import androidx.compose.foundation.layout.calculateStartPadding
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -16,16 +16,11 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Home
-import androidx.compose.material.icons.rounded.Star
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.LinearProgressIndicator
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.SuggestionChip
-import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -33,12 +28,11 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.Dp
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
 import org.coderic.protective.mobile.R
-import org.coderic.protective.mobile.ui.theme.fredoka
+import org.coderic.protective.mobile.ui.theme.PetCareContentText
+import org.coderic.protective.mobile.ui.theme.PetCareTitleText
 
 @Composable
 fun DeviceScreen(paddingValues: PaddingValues) {
@@ -93,8 +87,8 @@ fun TitleNameDevice() {
                 .background(Color.White),
             horizontalArrangement = Arrangement.SpaceBetween,
             verticalAlignment = Alignment.CenterVertically ) {
-            DeviceText("Fi Smart Collar", 28, false )
-            DeviceText("Blocky", 16, true )
+            PetCareTitleText( text = "Fi Smart Collar", size = 28 )
+            PetCareContentText(text = "Blocky", size = 16)
         }
     }
 }
@@ -109,12 +103,13 @@ fun StatusDevice() {
         elevation = CardDefaults.cardElevation( 16.dp )
     ) {
         Row( Modifier.padding(16.dp)) {
-            DeviceText("Connected", 16, true, modifier = Modifier.weight(1f))
+            PetCareContentText(text = "Connected", size = 16, modifier = Modifier.weight( 1f ), align = TextAlign.Start )
 
             Icon(painterResource(id = R.drawable.bateria ), contentDescription = "Pila", tint = Color.Black,
                 modifier = Modifier.size(16.dp))
             Spacer(modifier = Modifier.width(8.dp))
-            DeviceText("46 %", 16, true )
+
+            PetCareContentText(text = "46 %", size = 16)
         }
     }
 }
@@ -134,7 +129,7 @@ fun PetStatus() {
                 modifier = Modifier.size(24.dp),
                 tint = Color.Black
             )
-            DeviceText("Pet Status", 24, false )
+            PetCareTitleText("Pet Status", 24 )
         }
         Row(Modifier.padding( horizontal = 16.dp, vertical = 16.dp )) {
             Card {
@@ -146,7 +141,10 @@ fun PetStatus() {
                         .size(80.dp)
                 )
             }
-            Column {
+            Column(
+                verticalArrangement = Arrangement.SpaceEvenly,
+                modifier = Modifier.fillMaxHeight()
+            ) {
                 Status("Health", 88)
                 Status("Food", 48)
                 Status("Mood", 51)
@@ -160,19 +158,8 @@ fun Status(name: String, value: Int) {
     Row(
         verticalAlignment = Alignment.CenterVertically
     ) {
-        DeviceText(name, 12, true, Modifier.padding(end = 16.dp, start = 16.dp ))
+        PetCareContentText( name, 12, modifier =  Modifier.padding(end = 16.dp, start = 16.dp ))
         LinearProgressIndicator(progress = (value.toFloat() / 100), modifier = Modifier.weight(1f) )
-        DeviceText(txt = "$value %", 12, true,  Modifier.padding(start = 16.dp), Color.Red )
+        PetCareContentText("$value %", 12,  Color.Red, modifier = Modifier.padding(start = 16.dp) )
     }
-}
-@Composable
-fun DeviceText( txt: String, size: Int, light: Boolean, modifier: Modifier = Modifier, color: Color = Color.Black ) {
-    Text(
-        modifier = modifier,
-        text = txt,
-        fontSize = size.sp,
-        fontFamily = fredoka,
-        fontWeight = if( light ) FontWeight.Medium else FontWeight.Bold,
-        color = color
-        )
 }

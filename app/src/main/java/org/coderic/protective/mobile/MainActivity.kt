@@ -13,6 +13,7 @@ import androidx.navigation.compose.rememberNavController
 import org.coderic.protective.mobile.model.Routes
 import org.coderic.protective.mobile.presentation.DashBoardScreen
 import org.coderic.protective.mobile.presentation.DeviceScreen
+import org.coderic.protective.mobile.presentation.LoadingScreen
 import org.coderic.protective.mobile.presentation.pet.PetScreen
 import org.coderic.protective.mobile.presentation.pet.PetViewModel
 import org.coderic.protective.mobile.presentation.components.BottomBar
@@ -23,6 +24,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
 
         setContent {
+
             CocoAppTheme {
                 // A surface container using the 'background' color from the theme
                 val navController = rememberNavController()
@@ -30,7 +32,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier
                         .fillMaxSize(),
                     contentColor = MaterialTheme.colorScheme.background,
-                    bottomBar = { BottomBar( navController ) }
+                    bottomBar = {
+                        BottomBar( navController )
+                    }
                 ) { paddingValues ->
                     NavHost(
                         navController = navController,
@@ -43,7 +47,7 @@ class MainActivity : ComponentActivity() {
                             PetScreen( paddingValues = paddingValues, PetViewModel() )
                         }
                         composable( Routes.ExploreScreen.route ) {
-                            // TODO: Finish the explore Screen
+                            LoadingScreen(paddingValues = paddingValues )
                         }
                         composable( Routes.ManageScreen.route ) {
                             DeviceScreen( paddingValues )
