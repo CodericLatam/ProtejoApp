@@ -20,11 +20,12 @@ data class Pet(
     val gender: Gender = Gender.FEMALE,
     val typePet: String = "",
     var age : Int = 0,
-    var weight: Float = 0f,
+    var weight: Double = 0.0,
     var height: Int = 0,
     val color: String = "",
     var description: String = "",
-    var image: String = ""
+    var image: String = "",
+    val id: Long = System.currentTimeMillis()
 )
 /** Gender.
  * @author José Ricardo

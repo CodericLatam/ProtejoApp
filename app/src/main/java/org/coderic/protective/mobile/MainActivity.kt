@@ -44,7 +44,7 @@ class MainActivity : ComponentActivity() {
                             DashBoardScreen(paddingValues = paddingValues, navController )
                         }
                         composable( Routes.MyPetScreen.route) {
-                            PetScreen( paddingValues = paddingValues, PetViewModel() )
+                            PetScreen( paddingValues = paddingValues, PetViewModel(this@MainActivity) )
                         }
                         composable( Routes.ExploreScreen.route ) {
                             LoadingScreen(paddingValues = paddingValues )
