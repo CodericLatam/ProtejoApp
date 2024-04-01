@@ -23,7 +23,7 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name="org.coderic.protective.mobile.MainActivity" android:exported="false" />
+        <activity android:name="org.coderic.protective.mobile.MainActivity" android:exported="true" />
     </application>
 
 </manifest>
