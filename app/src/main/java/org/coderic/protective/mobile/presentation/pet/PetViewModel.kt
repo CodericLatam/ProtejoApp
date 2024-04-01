@@ -9,4 +9,8 @@ import org.coderic.protective.mobile.model.datos.Pet
 class PetViewModel( context: Context) : ViewModel() {
     val casosUsoMascota = CasosUsoMascota( context )
     val myPet = casosUsoMascota.getMascota( 1231 )
+
+    fun btnAddPet() {
+
+    }
 }

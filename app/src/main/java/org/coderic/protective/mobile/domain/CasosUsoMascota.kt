@@ -11,18 +11,24 @@ class CasosUsoMascota( context: Context ) {
     fun guardarMascota( pet: Pet ) {
         almacenamiento.savePet( pet )
     }
-    fun getMascota( id: Long ) : Pet {
-        almacenamiento.getPet( id )
-        return Pet(
-            name = "Bella",
-            typePet = "Border Collie",
-            gender = Gender.MAN,
-            age = 11,
-            weight = 7.5,
-            height = 54,
-            color = "Black",
-            description = "My first dog which was gifted by my mother for my 20th birthday."
-        )
+    fun getMascota( id: Long ) : Pet? {
+        val pet = almacenamiento.getPet( id )
+        return pet
+        /*if( pet == null ) {
+            return Pet(
+                name = "Bella",
+                typePet = "Border Collie",
+                gender = Gender.MAN,
+                age = 11,
+                weight = 7.5,
+                height = 54,
+                color = "Black",
+                description = "My first dog which was gifted by my mother for my 20th birthday."
+            )
+        }
+        else {
+            return pet
+        }*/
     }
 
 }

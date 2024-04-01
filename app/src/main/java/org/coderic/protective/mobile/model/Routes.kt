@@ -7,6 +7,7 @@ sealed class Routes( val route : String ) {
     // Ruts de MainActivity
     data object MainScreen: Routes("main/home")
     data object MyPetScreen: Routes("main/profile")
+    data object MyUpdatePetScreen : Routes("main/profile/update")
     data object ExploreScreen: Routes("main/explore")
     data object ManageScreen: Routes("main/manage")
 }

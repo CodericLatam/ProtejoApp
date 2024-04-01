@@ -4,6 +4,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -123,6 +124,25 @@ fun PetCareTextField(value: String, placeholder: Int, imageVector: ImageVector, 
         },
         placeholder = {
             PetCareContentText( text = stringResource(id = placeholder), 16, color = Color.Gray )
+        },
+        colors = TextFieldDefaults.colors(
+            unfocusedIndicatorColor = Color.Transparent,
+            focusedIndicatorColor = Color.Transparent,
+            unfocusedPlaceholderColor = Color.Gray,
+            unfocusedLeadingIconColor = Color.Gray
+        )
+    )
+}
+@Composable
+fun PetCareNumberField( value: String, imageVector: ImageVector, onValueChange: (String) -> Unit ) {
+    OutlinedTextField(
+        modifier = Modifier
+            .fillMaxWidth()
+            .clip(RoundedCornerShape(10.dp)),
+        value = value,
+        onValueChange = { onValueChange(it) },
+        leadingIcon = {
+            Icon(imageVector = imageVector, contentDescription = "Email")
         },
         colors = TextFieldDefaults.colors(
             unfocusedIndicatorColor = Color.Transparent,
