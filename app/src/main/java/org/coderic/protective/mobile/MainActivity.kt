@@ -15,9 +15,8 @@ import org.coderic.protective.mobile.presentation.DashBoardScreen
 import org.coderic.protective.mobile.presentation.DeviceScreen
 import org.coderic.protective.mobile.presentation.LoadingScreen
 import org.coderic.protective.mobile.presentation.UpdatePetScreen
-import org.coderic.protective.mobile.presentation.pet.PetScreen
+import org.coderic.protective.mobile.presentation.components.MyBottomBar
 import org.coderic.protective.mobile.presentation.pet.PetViewModel
-import org.coderic.protective.mobile.presentation.components.BottomBar
 import org.coderic.protective.mobile.ui.theme.CocoAppTheme
 
 class MainActivity : ComponentActivity() {
@@ -36,7 +35,7 @@ class MainActivity : ComponentActivity() {
                         .fillMaxSize(),
                     contentColor = MaterialTheme.colorScheme.background,
                     bottomBar = {
-                        BottomBar( navController )
+                        MyBottomBar( navController )
                     }
                 ) { paddingValues ->
                     NavHost(
