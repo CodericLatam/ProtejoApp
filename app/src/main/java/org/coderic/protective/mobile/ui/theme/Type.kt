@@ -2,10 +2,8 @@ package org.coderic.protective.mobile.ui.theme
 
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.material3.TextFieldDefaults
@@ -20,7 +18,6 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -114,7 +111,7 @@ fun PetCareContentText( text: String, size: Int, color: Color, modifier: Modifie
     )
 }
 @Composable
-fun PetCareTextField(value: String, placeholder: Int = 0, imageVector: ImageVector, onValueChange: (String) -> Unit ) {
+fun PetCareTextField(value: String, placeholder: Int, imageVector: ImageVector, onValueChange: (String) -> Unit ) {
     TextField(
         modifier = Modifier
             .fillMaxWidth()
@@ -125,35 +122,13 @@ fun PetCareTextField(value: String, placeholder: Int = 0, imageVector: ImageVect
             Icon(imageVector = imageVector, contentDescription = "Email")
         },
         placeholder = {
-            PetCareContentText( text = if( placeholder != 0 ) stringResource(id = placeholder) else "", 16, color = Color.Gray )
+            PetCareContentText( text = stringResource(id = placeholder), 16, color = Color.Gray )
         },
         colors = TextFieldDefaults.colors(
             unfocusedIndicatorColor = Color.Transparent,
             focusedIndicatorColor = Color.Transparent,
             unfocusedPlaceholderColor = Color.Gray,
             unfocusedLeadingIconColor = Color.Gray
-        )
-    )
-}
-@Composable
-fun PetCareNumberField( value: String, imageVector: ImageVector, onValueChange: (String) -> Unit ) {
-    OutlinedTextField(
-        modifier = Modifier
-            .fillMaxWidth()
-            .clip(RoundedCornerShape(10.dp)),
-        value = value,
-        onValueChange = { onValueChange(it) },
-        leadingIcon = {
-            Icon(imageVector = imageVector, contentDescription = "Email")
-        },
-        colors = TextFieldDefaults.colors(
-            unfocusedIndicatorColor = Color.Transparent,
-            focusedIndicatorColor = Color.Transparent,
-            unfocusedPlaceholderColor = Color.Gray,
-            unfocusedLeadingIconColor = Color.Gray
-        ),
-        keyboardOptions = KeyboardOptions(
-            keyboardType = KeyboardType.Number
         )
     )
 }

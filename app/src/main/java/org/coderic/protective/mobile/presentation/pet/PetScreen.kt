@@ -19,7 +19,6 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Add
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Button
@@ -27,6 +26,7 @@ import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -35,11 +35,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import org.coderic.protective.mobile.R
 import org.coderic.protective.mobile.ui.theme.PetCareContentText
 import org.coderic.protective.mobile.ui.theme.PetCareTitleText
+import org.coderic.protective.mobile.ui.theme.fredoka
 import org.coderic.protective.mobile.ui.theme.rosa
 import org.coderic.protective.mobile.ui.theme.seed
 import org.coderic.protective.mobile.ui.theme.text_desc_color
@@ -51,40 +54,8 @@ fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel) {
             .fillMaxSize()
             .padding(paddingValues)
     ) {
-        if( petViewModel.myPet != null ) {
-            ImageBanner()
-            BodyPetScreen(Modifier.align(Alignment.BottomCenter), petViewModel )
-        }
-        else {
-            NoPetScreen( paddingValues, petViewModel )
-        }
-    }
-}
-@Composable
-fun NoPetScreen(paddingValues: PaddingValues, petViewModel: PetViewModel) {
-    Column(
-        modifier = Modifier
-            .fillMaxSize()
-            .padding(paddingValues),
-        horizontalAlignment = Alignment.CenterHorizontally,
-        verticalArrangement = Arrangement.Center
-    ) {
-        Icon(painter = painterResource(id = R.drawable.sound_dog_icon), contentDescription = "Pet", Modifier.size(80.dp), tint = Color.Black)
-        PetCareTitleText(text = stringResource(id = R.string.addPet), 24)
-        Spacer(modifier = Modifier.height(16.dp))
-        Button(
-            modifier = Modifier
-                .fillMaxWidth(0.8f),
-            onClick = { petViewModel.btnAddPet() },
-            shape = RoundedCornerShape(10.dp),
-            colors = ButtonDefaults.buttonColors(
-                containerColor = seed,
-                contentColor = Color.White
-            )
-        )  {
-            Icon( imageVector = Icons.Filled.Add, contentDescription = "Add" )
-            PetCareTitleText(text = stringResource(id = R.string.addBtn), 16, Color.White )
-        }
+        ImageBanner()
+        BodyPetScreen(Modifier.align(Alignment.BottomCenter), petViewModel )
     }
 }
 
@@ -117,12 +88,12 @@ fun BodyPetScreen( modifier: Modifier, petViewModel: PetViewModel ) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    PetCareTitleText( text = petViewModel.myPet!!.name, 24 )
+                    PetCareTitleText( text = petViewModel.myPet.name, 24 )
                     Spacer(modifier = Modifier.height(8.dp))
                     PetCareContentText (text = petViewModel.myPet.typePet, 16, text_desc_color )
                 }
                 Icon(
-                    painter = painterResource( id = petViewModel.myPet!!.gender.image ),
+                    painter = painterResource( id = petViewModel.myPet.gender.image ),
                     contentDescription = "Gender",
                     tint = Color.White,
                     modifier = Modifier
@@ -141,20 +112,20 @@ fun BodyPetScreen( modifier: Modifier, petViewModel: PetViewModel ) {
                 tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
-            PetCareTitleText(text = "About ${petViewModel.myPet!!.name}", size = 20)
+            PetCareTitleText(text = "About ${petViewModel.myPet.name}", size = 20)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row(
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            PetData(stringResource(id = R.string.date_age), "${petViewModel.myPet!!.age.toString()} days" )
-            PetData(stringResource(id = R.string.date_weight), "${petViewModel.myPet!!.weight.toString()} Kg")
-            PetData(stringResource(id = R.string.date_height), "${petViewModel.myPet!!.height.toString()} cm" )
-            PetData(stringResource(id = R.string.date_color), petViewModel.myPet!!.color )
+            PetData(stringResource(id = R.string.date_age), "${petViewModel.myPet.age.toString()} days" )
+            PetData(stringResource(id = R.string.date_weight), "${petViewModel.myPet.weight.toString()} Kg")
+            PetData(stringResource(id = R.string.date_height), "${petViewModel.myPet.height.toString()} cm" )
+            PetData(stringResource(id = R.string.date_color), petViewModel.myPet.color )
         }
         Spacer(modifier = Modifier.height(16.dp))
-        PetCareContentText(text = petViewModel.myPet!!.description, size = 16, color = Color.Gray, align = TextAlign.Start )
+        PetCareContentText(text = petViewModel.myPet.description, size = 16, color = Color.Gray, align = TextAlign.Start )
         Spacer(modifier = Modifier.height(24.dp))
         Row {
             Icon(

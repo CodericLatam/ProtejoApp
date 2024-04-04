@@ -24,7 +24,7 @@ import org.coderic.protective.mobile.ui.theme.navColor
 import org.coderic.protective.mobile.ui.theme.selectedIconColor
 
 @Composable
-fun MyBottomBar( navController: NavHostController) {
+fun BottomBar( navController: NavHostController) {
     var screen by remember { mutableStateOf( 1 ) }
     NavigationBar (
         containerColor = navColor

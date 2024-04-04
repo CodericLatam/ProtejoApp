@@ -55,23 +55,4 @@
     <!-- Genders -->
     <string name="man"> Man </string>
     <string name="female"> Female </string>
-
-    <!-- AddPet Screen -->
-    <string name="addPet"> Add Pet </string>
-    <string name="addBtn"> Add </string>
-
-    <string name="nameForm"> Name: </string>
-    <string name="nameFormPlaceholder"> The name of your pet </string>
-
-    <string name="titleForm"> Another data of your pet. (Optional)</string>
-
-    <string name="genderForm"> Gender: </string>
-    <string name="genderFormPlaceholder"> Gender of your pet </string>
-    <string name="ageForm"> Age: </string>
-    <string name="ageFormPlaceholder"> The age of your pet </string>
-    <string name="typeForm"> Type: </string>
-    <string name="weightForm"> Weight:  </string>
-    <string name="heightForm"> Height: </string>
-    <string name="colorForm"> Color: </string>
-    <string name="descriptionForm"> Description: </string>
 </resources>
