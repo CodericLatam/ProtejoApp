@@ -1,0 +1,61 @@
+package org.coderic.protective.mobile.data
+
+import android.content.Context
+import android.content.SharedPreferences
+import org.coderic.protective.mobile.model.datos.Device
+import org.coderic.protective.mobile.model.datos.Gender
+import org.coderic.protective.mobile.model.datos.Pet
+import org.json.JSONObject
+
+const val ARCHIVE_PREFERENCE = "almacenamiento"
+class MacronutrientPreferences (context: Context ) : Almacenamiento {
+
+    private val preferences: SharedPreferences = context.getSharedPreferences( ARCHIVE_PREFERENCE, Context.MODE_PRIVATE )
+    override fun savePet( pet: Pet ) {
+        val editor = preferences.edit()
+        val petJson = JSONObject()
+            .put("name", pet.name)
+            .put("typePet", pet.typePet )
+            .put("age", pet.age )
+            .put("weight", pet.weight )
+            .put("height", pet.height )
+            .put("color", pet.color )
+            .put("description", pet.description )
+            .put("image", pet.image )
+            .put("id", pet.id )
+            .put("gender", pet.gender.type )
+        editor.putString("pet${pet.id}", petJson.toString() )
+        editor.apply()
+    }
+
+    override fun saveDevice( device: Device ) {
+        TODO("Not yet implemented")
+    }
+
+    override fun getPet(id: Long): Pet? {
+        val petString = preferences.getString("pet$id", "")
+        if (petString.equals("")) return null;
+        val petJSON = JSONObject(petString)
+
+        return Pet(
+            name = petJSON.getString("name"),
+            gender = if (petJSON.getInt("gender") == 0) Gender.MAN else Gender.FEMALE,
+            typePet = petJSON.getString("typePet"),
+            age = petJSON.getInt("age"),
+            weight = petJSON.getDouble("weight"),
+            height = petJSON.getInt("height"),
+            color = petJSON.getString("color"),
+            description = petJSON.getString("description"),
+            image = petJSON.getString("image"),
+            id = petJSON.getLong("id")
+        )
+    }
+
+    override fun getDevice(): Device {
+        return Device(
+            preferences.getString("device_name", "")!!,
+            false,
+            0
+        )
+    }
+}
