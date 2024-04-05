@@ -74,4 +74,8 @@
     <string name="heightForm"> Height: </string>
     <string name="colorForm"> Color: </string>
     <string name="descriptionForm"> Description: </string>
+
+    <string name="btnAddPet"> Save Pet </string>
+    <string name="formRegistrar"> Registrar </string>
+    <string name="formActualizar"> Actualizar </string>
 </resources>

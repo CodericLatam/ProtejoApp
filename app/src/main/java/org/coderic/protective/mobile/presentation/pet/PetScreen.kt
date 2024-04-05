@@ -52,6 +52,7 @@ fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel) {
             .padding(paddingValues)
     ) {
         if( petViewModel.myPet != null ) {
+            petViewModel.showname()
             ImageBanner()
             BodyPetScreen(Modifier.align(Alignment.BottomCenter), petViewModel )
         }
@@ -75,7 +76,7 @@ fun NoPetScreen(paddingValues: PaddingValues, petViewModel: PetViewModel) {
         Button(
             modifier = Modifier
                 .fillMaxWidth(0.8f),
-            onClick = { petViewModel.btnAddPet() },
+            onClick = { petViewModel.btnToAddPet() },
             shape = RoundedCornerShape(10.dp),
             colors = ButtonDefaults.buttonColors(
                 containerColor = seed,

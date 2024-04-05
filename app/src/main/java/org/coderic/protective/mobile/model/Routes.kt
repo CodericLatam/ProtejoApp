@@ -10,4 +10,5 @@ sealed class Routes( val route : String ) {
     data object MyUpdatePetScreen : Routes("main/profile/update")
     data object ExploreScreen: Routes("main/explore")
     data object ManageScreen: Routes("main/manage")
+
 }

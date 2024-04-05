@@ -25,6 +25,7 @@ class MacronutrientPreferences (context: Context ) : Almacenamiento {
             .put("id", pet.id )
             .put("gender", pet.gender.type )
         editor.putString("pet${pet.id}", petJson.toString() )
+        editor.putString( "id", pet.id.toString() )
         editor.apply()
     }
 
@@ -32,10 +33,11 @@ class MacronutrientPreferences (context: Context ) : Almacenamiento {
         TODO("Not yet implemented")
     }
 
-    override fun getPet(id: Long): Pet? {
-        val petString = preferences.getString("pet$id", "")
-        if (petString.equals("")) return null;
-        val petJSON = JSONObject(petString)
+    override fun getPet(): Pet? {
+        val petId = preferences.getString("id", "")
+        if ( petId == "" ) return null;
+        val petString = preferences.getString("pet$petId", "")
+        val petJSON = JSONObject( petString!! )
 
         return Pet(
             name = petJSON.getString("name"),
