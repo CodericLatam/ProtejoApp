@@ -30,5 +30,8 @@ class CasosUsoMascota( context: Context ) {
             return pet
         }*/
     }
+    fun deleteMascota( pet: Pet ) {
+        almacenamiento.deletePet( pet )
+    }
 
 }

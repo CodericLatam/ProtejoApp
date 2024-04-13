@@ -53,6 +53,13 @@ class MacronutrientPreferences (context: Context ) : Almacenamiento {
         )
     }
 
+    override fun deletePet( pet: Pet ) {
+        val editor = preferences.edit()
+        editor.putString("pet${pet.id}", null )
+        editor.putString( "id", null )
+        editor.apply()
+    }
+
     override fun getDevice(): Device {
         return Device(
             preferences.getString("device_name", "")!!,

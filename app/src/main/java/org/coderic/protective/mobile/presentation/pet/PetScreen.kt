@@ -20,6 +20,7 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.KeyboardArrowRight
 import androidx.compose.material.icons.filled.LocationOn
 import androidx.compose.material3.Button
@@ -28,6 +29,9 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.livedata.observeAsState
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -38,6 +42,7 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import org.coderic.protective.mobile.R
+import org.coderic.protective.mobile.model.datos.Pet
 import org.coderic.protective.mobile.ui.theme.PetCareContentText
 import org.coderic.protective.mobile.ui.theme.PetCareTitleText
 import org.coderic.protective.mobile.ui.theme.rosa
@@ -46,19 +51,33 @@ import org.coderic.protective.mobile.ui.theme.text_desc_color
 
 @Composable
 fun PetScreen( paddingValues: PaddingValues, petViewModel: PetViewModel) {
+    val arePet by petViewModel.arePet.observeAsState( initial = false )
+
+    petViewModel.getPet()
     Box(
         Modifier
             .fillMaxSize()
             .padding(paddingValues)
     ) {
-        if( petViewModel.myPet != null ) {
-            petViewModel.showname()
+        if( arePet != false ) {
             ImageBanner()
+            ButtonDelete( Modifier.align( Alignment.TopEnd ) ) {
+                petViewModel.deletePet( petViewModel.myPet.value!! )
+            }
             BodyPetScreen(Modifier.align(Alignment.BottomCenter), petViewModel )
         }
         else {
             NoPetScreen( paddingValues, petViewModel )
         }
+    }
+}
+@Composable
+fun ButtonDelete( modifier: Modifier, onClick: () -> Unit ) {
+    Button(
+        modifier = modifier,
+        onClick = { onClick() }
+    ) {
+        Icon(imageVector = Icons.Filled.Delete, contentDescription = "Delete")
     }
 }
 @Composable
@@ -118,12 +137,12 @@ fun BodyPetScreen( modifier: Modifier, petViewModel: PetViewModel ) {
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
                 Column {
-                    PetCareTitleText( text = petViewModel.myPet!!.name, 24 )
+                    PetCareTitleText( text = petViewModel.myPet.value!!.name, 24 )
                     Spacer(modifier = Modifier.height(8.dp))
-                    PetCareContentText (text = petViewModel.myPet.typePet, 16, text_desc_color )
+                    PetCareContentText (text = petViewModel.myPet.value!!.typePet, 16, text_desc_color )
                 }
                 Icon(
-                    painter = painterResource( id = petViewModel.myPet!!.gender.image ),
+                    painter = painterResource( id = petViewModel.myPet.value!!.gender.image ),
                     contentDescription = "Gender",
                     tint = Color.White,
                     modifier = Modifier
@@ -142,20 +161,20 @@ fun BodyPetScreen( modifier: Modifier, petViewModel: PetViewModel ) {
                 tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
-            PetCareTitleText(text = "About ${petViewModel.myPet!!.name}", size = 20)
+            PetCareTitleText(text = "About ${petViewModel.myPet.value!!.name}", size = 20)
         }
         Spacer(modifier = Modifier.height(16.dp))
         Row(
             Modifier.fillMaxWidth(),
             horizontalArrangement = Arrangement.SpaceBetween
         ) {
-            PetData(stringResource(id = R.string.date_age), "${petViewModel.myPet!!.age.toString()} days" )
-            PetData(stringResource(id = R.string.date_weight), "${petViewModel.myPet!!.weight.toString()} Kg")
-            PetData(stringResource(id = R.string.date_height), "${petViewModel.myPet!!.height.toString()} cm" )
-            PetData(stringResource(id = R.string.date_color), petViewModel.myPet!!.color )
+            PetData(stringResource(id = R.string.date_age), "${petViewModel.myPet.value!!.age.toString()} days" )
+            PetData(stringResource(id = R.string.date_weight), "${petViewModel.myPet.value!!.weight.toString()} Kg")
+            PetData(stringResource(id = R.string.date_height), "${petViewModel.myPet.value!!.height.toString()} cm" )
+            PetData(stringResource(id = R.string.date_color), petViewModel.myPet.value!!.color )
         }
         Spacer(modifier = Modifier.height(16.dp))
-        PetCareContentText(text = petViewModel.myPet!!.description, size = 16, color = Color.Gray, align = TextAlign.Start )
+        PetCareContentText(text = petViewModel.myPet.value!!.description, size = 16, color = Color.Gray, align = TextAlign.Start )
         Spacer(modifier = Modifier.height(24.dp))
         Row {
             Icon(
@@ -164,7 +183,7 @@ fun BodyPetScreen( modifier: Modifier, petViewModel: PetViewModel ) {
                 tint = Color.Black
             )
             Spacer(modifier = Modifier.width(8.dp))
-            PetCareTitleText(text = "${petViewModel.myPet.name}'s Status", size = 20)
+            PetCareTitleText(text = "${petViewModel.myPet.value!!.name}'s Status", size = 20)
         }
         Spacer(modifier = Modifier.height(16.dp))
         PetStateData(title = "Location")
