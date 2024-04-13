@@ -5,7 +5,8 @@ import org.coderic.protective.mobile.model.datos.Pet
 
 interface Almacenamiento {
     fun savePet( pet: Pet )
+    fun getPet() : Pet?
+    fun deletePet( pet: Pet )
     fun saveDevice( device: Device )
-    fun getPet( id: Long ) : Pet?
     fun getDevice() : Device
 }

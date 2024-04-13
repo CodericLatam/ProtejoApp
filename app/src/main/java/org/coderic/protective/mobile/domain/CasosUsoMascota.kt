@@ -11,8 +11,8 @@ class CasosUsoMascota( context: Context ) {
     fun guardarMascota( pet: Pet ) {
         almacenamiento.savePet( pet )
     }
-    fun getMascota( id: Long ) : Pet? {
-        val pet = almacenamiento.getPet( id )
+    fun getMascota() : Pet? {
+        val pet = almacenamiento.getPet()
         return pet
         /*if( pet == null ) {
             return Pet(
@@ -29,6 +29,9 @@ class CasosUsoMascota( context: Context ) {
         else {
             return pet
         }*/
+    }
+    fun deleteMascota( pet: Pet ) {
+        almacenamiento.deletePet( pet )
     }
 
 }
